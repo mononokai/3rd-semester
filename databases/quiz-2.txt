@@ -1,0 +1,521 @@
+1: 
+SELECT name 
+FROM Customers;
+
+2:
+SELECT product_name
+FROM (
+  SELECT *
+  FROM Products
+  WHERE price > 50
+);
+
+3:
+SELECT customer_id, COUNT(*) order_count
+FROM Orders
+GROUP BY customer_id
+ORDER BY order_count DESC;
+
+4: 
+SELECT AVG(salary) 
+FROM Employees 
+WHERE title = "Manager";
+
+5:
+SELECT name, age
+FROM Customers
+WHERE customer_id IN (
+  SELECT customer_id
+  FROM Orders
+  GROUP BY customer_id
+  HAVING COUNT(*) > 0
+)
+ORDER BY name;
+
+6: 
+SELECT product_name, price 
+FROM Products 
+ORDER BY price DESC;
+
+7:
+SELECT dept_name, AVG(salary) avg_salary
+FROM Employees
+GROUP BY dept_name
+HAVING AVG(salary) > 60000;
+
+8:
+SELECT c.name, COUNT(OrderID) AS order_count
+FROM Customers 
+NATURAL JOIN Orders
+WHERE City LIKE 'S%'
+GROUP BY customer_id
+ORDER BY name;
+
+9:
+SELECT name, age
+FROM Customers
+NATURAL JOIN Orders
+HAVING SUM(Price) >= 1000
+GROUP BY customer_id, name, age
+ORDER BY name;
+
+10:
+SELECT employee_name
+FROM Employees
+ORDER BY department_name, employee_name;
+
+11: 
+SELECT * 
+FROM Employees;
+
+12: 
+SELECT ProductID, ProductName 
+FROM Products;
+
+13: 
+SELECT DISTINCT city 
+FROM Customers;
+
+14: 
+SELECT (Quantity * PricePerUnit) Total 
+FROM Orders;
+
+15: 
+SELECT * 
+FROM Customers 
+WHERE Age = 30;
+
+16: 
+SELECT * 
+FROM Products 
+WHERE Price BETWEEN 50 AND 100;
+
+17: 
+SELECT * 
+FROM Customers 
+WHERE Age <= 25 OR Age >= 45;
+
+18: 
+SELECT * 
+FROM Products 
+WHERE Price < 50 AND Rating >= 4;
+
+19: 
+SELECT * 
+FROM Employees 
+WHERE DepartmentID IN (1, 2);
+
+20:
+SELECT *
+FROM Orders
+WHERE OrderStatus IN ("Pending", "Shipped");
+
+21: 
+SELECT * 
+FROM Employees 
+WHERE Salary BETWEEN 40000 AND 60000;
+
+22:
+SELECT *
+FROM Orders
+WHERE OrderDate BETWEEN '2023-01-01' AND '2023-12-31';
+
+23:
+SELECT *
+FROM Products
+WHERE QuantityInStock BETWEEN 10 AND 100;
+
+24: 
+SELECT * 
+FROM Customers 
+WHERE Age BETWEEN 18 AND 30;
+
+25: 
+SELECT * 
+FROM Customers 
+WHERE CustomerID IN (101, 204, 305);
+
+26: 
+SELECT * 
+FROM Products 
+WHERE ProductID <> 4;
+
+27:
+SELECT *
+FROM Customers
+WHERE CustomerID NOT IN (102, 205, 306);
+
+28:
+SELECT p.ProductID, p.ProductName
+FROM Products
+NATURAL JOIN ProductReviews
+WHERE ReviewID IS NULL;
+
+29:
+SELECT CustomerID, FirstName, LastName
+FROM Customers
+NATURAL JOIN Orders
+WHERE OrderID IS NULL;
+
+30: 
+SELECT * 
+FROM Customers 
+WHERE FirstName LIKE 'A%';
+
+31: 
+SELECT * 
+FROM Products 
+WHERE ProductName LIKE '%Phone%';
+
+32:
+SELECT EmployeeID, FirstName, LastName
+FROM Employees
+WHERE ManagerID IS NULL;
+
+33: 
+SELECT OrderID, OrderDate 
+FROM Orders 
+WHERE CustomerID IS NULL;
+
+34: 
+SELECT * 
+FROM Employees 
+ORDER BY DepartmentID ASC, Salary DESC;
+
+35: 
+SELECT * 
+FROM Orders 
+ORDER BY CustomerID, OrdateDate;
+
+36: 
+SELECT COUNT(OrderID), COUNT(DISTINCT CustomerID) 
+FROM Orders;
+
+37: 
+SELECT COUNT (DISTINCT ProductID) 
+FROM OrderDetails;
+
+38:
+SELECT DepartmentID, MIN(Salary), MAX(Salary), AVG(Salary)
+FROM Employees;
+
+39:
+SELECT DepartmentID, AVG(Salary)
+FROM Employees
+HAVING AVG(Salary) > 60000;
+
+40:
+SELECT FirstName, LastName, MIN(OrderAmount), MAX(OrderAmount), AVG(OrderAmount)
+FROM Customers
+NATURAL JOIN Orders
+GROUP BY CustomerID
+HAVING COUNT(OrderID) > 1;
+
+41:
+SELECT FirstName, LastName
+FROM Customers
+NATURAL JOIN Orders
+GROUP BY CustomerID
+HAVING COUNT(OrderID) > 2;
+
+42:
+SELECT FirstName, LastName
+FROM Customers
+NATURAL JOIN Orders
+WHERE OrderDate IN (
+  SELECT OrderDate
+  FROM Orders
+  WHERE CustomerID = 101
+);
+
+43:
+SELECT FirstName, LastName
+FROM Customers
+NATURAL JOIN Orders
+HAVING OrderAmount > (
+  SELECT AVG(OrderAmount)
+  FROM Orders
+);
+
+44:
+SELECT ProductName
+FROM Products p
+WHERE Price > (
+  SELECT AVG(Price)
+  FROM Products
+  WHERE CustomerID = p.CustomerID
+);
+
+45:
+SELECT FirstName, LastName
+FROM Employees e
+WHERE Salary > (
+  SELECT AVG(Salary)
+  FROM Employees
+  WHERE DepartmentID = e.DepartmentID
+);
+
+46:
+SELECT FirstName, LastName
+FROM Customers
+NATURAL JOIN Orders
+NATURAL JOIN Products
+GROUP BY FirstName, LastName, CustomerID
+HAVING COUNT(DISTINCT CategoryID) > 1;
+
+47:
+SELECT DISTINCT ProductName
+FROM Orders
+NATURAL JOIN Customers
+WHERE Location = "New York";
+
+48:
+SELECT FirstName, LastName
+FROM Customers
+NATURAL JOIN Orders
+WHERE OrderAmount > ANY (
+  SELECT OrderAmount
+  FROM Orders
+  WHERE CustomerID = 101
+);
+
+49:
+SELECT ProductName
+FROM Products
+WHERE Price > ANY (
+  SELECT Price
+  FROM Products
+  WHERE CategoryID = 1
+);
+
+50:
+SELECT FirstName, LastName
+FROM Customers
+NATURAL JOIN Orders
+WHERE OrderAmount > ALL (
+  SELECT OrderAmount
+  FROM Orders
+  WHERE CustomerID = 101
+);
+
+51:
+SELECT ProductName
+FROM Products
+WHERE Price > ALL (
+  SELECT Price
+  FROM Products
+  WHERE CategoryID = 1
+);
+
+52:
+SELECT FirstName, LastName
+FROM Customers
+NATURAL JOIN Orders
+WHERE OrderAmount > SOME (
+  SELECT OrderAmount
+  FROM Orders
+  WHERE CustomerID = 101
+)
+GROUP BY FirstName, LastName;
+
+53:
+SELECT ProductName
+FROM Products
+WHERE Price > SOME (
+  SELECT Price
+  FROM Products
+  WHERE CategoryID = 1
+);
+
+54:
+SELECT FirstName, LastName
+FROM Customers
+NATURAL JOIN Orders
+NATURAL JOIN OrderDetails
+WHERE ProductID = 1;
+
+55:
+SELECT FirstName, LastName
+FROM Employees
+WHERE EmployeeID IN (
+  SELECT DISTINCT ManagerID
+  FROM Employees
+);
+
+56:
+SELECT FirstName, LastName, OrderID, OrderDate
+FROM Customers
+NATURAL JOIN Orders;
+
+57:
+SELECT e.FirstName, e.LastName, m.FirstName AS ManagerFirstName, m.LastName AS ManagerLastName
+FROM Employees e
+JOIN Employees m ON e.ManagerID = m.EmployeeID;
+
+58:
+SELECT FirstName, LastName, OrderDate
+FROM Customers
+LEFT JOIN Orders USING (CustomerID)
+WHERE OrderID IS NOT NULL;
+
+59:
+SELECT e.FirstName, e.LastName, m.FirstName AS ManagerFirstName, m.LastName AS ManagerLastName
+FROM Employees e, Employees m
+WHERE e.ManagerID = m.EmployeeID;
+
+60:
+SELECT ProductName, CategoryName
+FROM Products
+NATURAL JOIN Categories
+ORDER BY CategoryName, ProductName;
+
+61:
+SELECT FirstName, LastName, OrderDate, ProductID
+FROM Customers
+NATURAL JOIN Orders
+NATURAL JOIN OrderDetails
+GROUP BY FirstName, LastName, OrderDate, ProductID;
+
+62 - a:
+SELECT FirstName, LastName, TeamName
+FROM Employees
+NATURAL JOIN TeamMembers
+NATURAL JOIN Teams;
+
+62 - b:
+SELECT SUM(UnitPrice * Quantity)
+FROM Products
+NATURAL JOIN Orders
+NATURAL JOIN OrderDetails
+GROUP BY CategoryID, YEAR(OrderDate);
+
+63:
+SELECT AVG(Salary)
+FROM Employees
+GROUP BY DepartmentID, JobTitle;
+
+64:
+SELECT FirstName, LastName, OrderDate
+FROM Customers
+LEFT JOIN Orders USING (CustomerID);
+
+65:
+SELECT ProductName, CategoryName
+FROM Products
+RIGHT JOIN Categories USING (CategoryID);
+
+66:
+SELECT FirstName, LastName, ProjectName
+FROM Employees
+LEFT JOIN Projects USING (EmployeeID);
+
+67: -- TODO
+SELECT e.FirstName, e.LastName, t.TeamName
+FROM Employees e
+LEFT JOIN Teams t ON e.EmployeeID = t.ManagerID;
+
+68:
+SELECT FirstName, LastName, OrderDate
+FROM Customers
+FULL JOIN Orders USING (CustomerID);
+
+69:
+SELECT e.FirstName, e.LastName, t.TeamName
+FROM Employees e 
+FULL JOIN Teams t ON e.EmployeeID = t.ManagerID;
+
+70:
+SELECT FirstName, LastName, OrderDate, OrderID
+FROM Customers 
+FULL JOIN Orders USING (CustomerID);
+
+71:
+SELECT FirstName, LastName
+FROM Customers
+NATURAL JOIN Orders
+HAVING COUNT(OrderID) >= 1;
+
+72:
+SELECT ProductName
+FROM Products
+LEFT JOIN OrderDetails USING (ProductID)
+WHERE ProductID IS NULL;
+
+73:
+SELECT DISTINCT CustomerName
+FROM Customers
+UNION
+SELECT DISTINCT SupplierName
+FROM Suppliers;
+
+74:
+SELECT ProductName
+FROM Products
+WHERE CategoryID IN (1, 2)
+GROUP BY ProductName
+HAVING COUNT(CategoryID) = 2;
+
+75: 
+UPDATE Products 
+SET Price = Price * 1.15 
+WHERE CategoryID = 1;
+
+76:
+INSERT INTO Customers (FirstName, LastName, Email)
+VALUES ('Rusty', 'Shackleford', 'r.shackleford@gmail.com');
+
+INSERT INTO Customers (FirstName, LastName)
+VALUES ('Robert', 'Dylan');
+
+77:
+INSERT INTO Orders (CustomerID, OrderDate)
+SELECT 2, OrderDate
+FROM Orders
+WHERE CustomerID = 1;
+
+78: 
+UPDATE Products 
+SET Price = Price * 1.1;
+
+79: 
+UPDATE Products 
+SET ProductName = ProductName + "(New)";
+
+80: 
+DELETE FROM Orders;
+
+81: 
+DELETE FROM Products 
+WHERE IsActive = 0;
+
+82: 
+DELETE FROM Orders 
+WHERE OrderDate < '2023-01-01';
+
+83:
+UPDATE Products
+SET Price = Price * 1.05, StockQuantity = StockQuantity * 0.9;
+
+84: 
+UPDATE Customers 
+SET FirstName = "Guy", Email = "guy@gmail.com";
+
+85:
+UPDATE Customers
+SET Email = REPLACE(Email, '@example.com', '@nycmail.com')
+WHERE City = "New York City";
+
+86:
+UPDATE Employees
+SET Salary = Salary * 1.1
+WHERE YearsOfExperience > 5;
+
+87:
+UPDATE Products
+SET Description = CONCAT(Description, ' Here\'s additional information.')
+WHERE Brand = 'ABC';
+
+88:
+UPDATE Customers
+SET DiscountPercentage = 0.10
+WHERE TotalPurchases > 1000;
