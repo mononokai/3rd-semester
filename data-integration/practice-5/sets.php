@@ -2,7 +2,6 @@
 
 session_start();
 
-require "sets.view.php";
 
 if (!isset($_SESSION['num_set1'])) {
   $_SESSION['num_set1'] = new Set([rand(0,20), rand(0,20), rand(0,20), rand(0,20), rand(0,20)]);
@@ -10,6 +9,55 @@ if (!isset($_SESSION['num_set1'])) {
   $_SESSION['num_set3'] = new Set([rand(0,20), rand(0,20), rand(0,20), rand(0,20), rand(0,20)]);
 }
 
+
+if (isset($_POST['submit'])) {
+  $operation = $_POST['operation'];
+  $selection = $_POST['set_select_1'];
+  $second = $_POST['set_select_2'];
+  $num_input = $_POST['num_input'];
+  switch ($operation) {
+    case "check":
+      if ($num_input) {
+        if ($_SESSION[$selection]->exists($num_input)) {
+          $_SESSION['result'] = "{$num_input} is in the set";
+        }
+        else {
+          $_SESSION['result'] = "{$num_input} is not in the set";
+        }
+      }
+      else {
+        $_SESSION['result'] = "Please fill out all required fields";
+      }
+      break;
+    case "add":
+      if ($num_input) {
+        $_SESSION[$selection]->addNumber($num_input);
+      }
+      else {
+        $_SESSION['result'] = "Please fill out all required fields";
+      }
+      break;
+    case "remove":
+      if ($num_input) {
+        $_SESSION[$selection]->remove($num_input);
+      }
+      else {
+        $_SESSION['result'] = "Please fill out all required fields";
+      }
+      break;
+    case "union":
+      $res = $_SESSION[$selection]->union($_SESSION[$second]->getSet());
+      $_SESSION['result'] = implode(', ', $res);
+      break;
+    case "intersect":
+      $res = $_SESSION[$selection]->intersection($_SESSION[$second]->getSet());
+      $_SESSION['result'] = implode(', ', $res);
+      break;
+  }
+}
+
+
+require "sets.view.php";
 
 
 class Set {
