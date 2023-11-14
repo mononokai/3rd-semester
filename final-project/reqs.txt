@@ -1,0 +1,99 @@
+--- Roles ---
+- Available roles (can create more, but it's optional):
+    - Admin
+    - Supervisor
+    - Caregiver
+    - Patient
+    - Doctor
+    - Family Member
+    - Can add more
+
+
+
+---- Registration ---
+- Family code is like a password that points to the patient (like an ID)
+- Admin must approve registrations, Supervisor can as well
+- Once registration is approved, 
+- User can only log in once registration is approved
+
+
+--- Login ---
+
+
+--- Patients ---
+- There are 4 groups of patients, each with a number
+- 
+
+
+--- Doctor's Appointment ---
+- Accessible by Admin and Supervisor
+- When the patient ID is entered, the patient's name shows
+- When date is selected, the "Doctor" dropdown only shows the doctors that are available that day
+- Roster must be assigned for a given date before that date is available for scheduling an appointment
+- Can only be one appointment per patient per day
+
+
+--- Roster ---
+- Accessible by everyone
+- There are 4 groups, so there must be 4 caregivers working any given day
+- If there is no roster for the given date, display message informing that it is not yet set
+- Should schedule at least a week ahead (this might have been misunderstood)
+
+
+--- New Roster ---
+- Accessible by Admin and Supervisor
+- If a caregiver is already being used for one day, they should not be available to select in another caregiver dropdown
+- All fields should be required
+
+
+--- All Employees Page ---
+- Accessible by Admin and Supervisor
+- Only Admin can assign/edit salary
+- Filter for each column
+
+
+--- All Patients Page ---
+- Accessible by Admin, Supervisor, Doctor, and Caregiver
+- Filter for each column
+
+
+--- Patient Home Page ---
+- Accessible only by logged in Patient
+- Patient ID and Patient Name input fill automatically with the logged in Patient's info
+- Date automatically shows today's date, but can be changed
+
+
+--- Family Member Home Page ---
+- Accessible only by Family Members
+- Must fill out both Family Code and Patient ID to see the details of a patient
+
+
+--- Caregiver Home Page ---
+- Accessible only by logged in Caregiver
+
+
+--- Doctor Home Page ---
+- Admin cannot access Doctor's page, only the specific Doctor
+- Shows all patient history for the specific logged in Doctor
+- Search option for each column
+- "Til Date" allows you to search for appointments up to that date
+
+
+--- Patient of Doctor ---
+- Accessible only by the specific logged in Doctor
+- Shows all appointments (old and new) that specific Patient had with that specific logged in Doctor
+- New prescription will be added to history for each appointment
+
+
+--- Admin's Report ---
+- Accessible only by Admin and Supervisor
+- Only shows Missed Patient Activity
+
+
+--- Payment ---
+- Accessible only by Admin
+- Only able to update if current date and previous update date are not the same
+- Prices:
+    - $10 per day
+    - $50 per appointment
+    - $5 per medicine/month
