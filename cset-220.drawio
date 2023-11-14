@@ -1,0 +1,70 @@
+<mxfile host="app.diagrams.net" modified="2023-11-14T01:09:54.468Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36" etag="jc6UK4Ikkjeaj72fyviR" version="22.1.0" type="device">
+  <diagram name="Page-1" id="igfPy67lth7oPX28R54t">
+    <mxGraphModel dx="987" dy="1118" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-1" value="User" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="160" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-2" value="user_id&lt;br&gt;role_id (fk)&amp;nbsp;&lt;br&gt;first_name&lt;br&gt;last_name&lt;br&gt;email&lt;br&gt;phone&lt;br&gt;password&lt;br&gt;dob&lt;br&gt;is_approved" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="wGULQWS6xf_RYn_nhBmc-1">
+          <mxGeometry y="50" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-3" value="Employee" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="30" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-4" value="employee_id (fk)&lt;br&gt;salary" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="wGULQWS6xf_RYn_nhBmc-3">
+          <mxGeometry y="50" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-6" value="Patient" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="30" width="180" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-7" value="patient_id&lt;br&gt;user_id (fk)&lt;br&gt;group&lt;br&gt;emergency_contact&lt;br&gt;emergency_contact_relationship&lt;br&gt;family_code&lt;br&gt;admission_date" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="wGULQWS6xf_RYn_nhBmc-6">
+          <mxGeometry y="50" width="180" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-8" value="Role" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-9" value="role_id&lt;br&gt;role_title&lt;br&gt;access_level" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="wGULQWS6xf_RYn_nhBmc-8">
+          <mxGeometry y="50" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-10" value="Roster" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="240" width="160" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-11" value="roster_id&lt;br&gt;supervisor_id (fk)&lt;br&gt;doctor_id (fk)&lt;br&gt;caregiver_1_id (fk)&lt;br&gt;caregiver_2_id (fk)&lt;br&gt;caregiver_3_id (fk)&lt;br&gt;caregiver_4_id (fk)&lt;br&gt;date" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="wGULQWS6xf_RYn_nhBmc-10">
+          <mxGeometry y="50" width="160" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-12" value="Appointment" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="160" width="160" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-13" value="appointment_id (fk)&lt;br&gt;patient_id (fk)&lt;br&gt;doctor_id (fk)&amp;nbsp;&lt;br&gt;date&lt;br&gt;comments&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;attended" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="wGULQWS6xf_RYn_nhBmc-12">
+          <mxGeometry y="50" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-16" value="Prescription" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="350" width="160" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-17" value="prescription_id (fk)&lt;br&gt;appointment_id (fk)&lt;br&gt;morning_med&lt;br&gt;afternoon_med&lt;br&gt;night_med" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="wGULQWS6xf_RYn_nhBmc-16">
+          <mxGeometry y="50" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-19" value="Bill" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="460" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-20" value="bill_id&lt;br&gt;patient_id (fk)&lt;br&gt;daily_care_cost&lt;br&gt;appointment_cost&lt;br&gt;med_cost&lt;br&gt;amount_owed&lt;br&gt;billed_on" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="wGULQWS6xf_RYn_nhBmc-19">
+          <mxGeometry y="50" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-21" value="Log" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="410" width="160" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-22" value="log_id&lt;br&gt;patient_id (fk)&lt;br&gt;appointment_id (fk)&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;caregiver_id (fk)&lt;br&gt;date&lt;br&gt;morning_med&lt;br&gt;afternoon_med&lt;br&gt;night_med&lt;br&gt;breakfast&lt;br&gt;lunch&lt;br&gt;dinner" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="wGULQWS6xf_RYn_nhBmc-21">
+          <mxGeometry y="50" width="160" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-26" value="Payment" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="530" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="wGULQWS6xf_RYn_nhBmc-27" value="payment_id&lt;br&gt;bill_id (fk)&lt;br&gt;amount_paid&lt;br&gt;date" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="wGULQWS6xf_RYn_nhBmc-26">
+          <mxGeometry y="50" width="160" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
